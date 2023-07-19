@@ -1,6 +1,7 @@
 from deck import Deck
 from player import Player
 from cards import Card
+import time
 
 deck = Deck()
 deck.shuffle()
@@ -13,7 +14,7 @@ while True:
     player1.give_hand(deck)
     dealer.give_hand(deck)
 
-    print('Your hand: ')
+    print('\nYour hand: ')
     player1.show_hand()
 
     print('\nDealers Hand:')
@@ -21,7 +22,7 @@ while True:
 
     #Player Turn
     while player1.hand_value() < 21:
-        print('Your hand: ')
+        print('\nYour hand: ')
         player1.show_hand()
         print(f'Current Value: {player1.hand_value()}')
 
@@ -40,8 +41,26 @@ while True:
             player1.show_hand()
             print(f'Current Value: {player1.hand_value()}')
             print('Bust')
+            time.sleep(2)
+
+
+    #Dealers turn
+    while dealer.hand_value() < 17:
+        print('\nDealers card:')
+        dealer.show_hand()
+        print(f'Current Value: {dealer.hand_value()}')
+
+        dealer.draw_card(deck)
+
+        time.sleep(2)
+    else:
+        print('\nDealers card:')
+        dealer.show_hand()
+        print(f'Current Value: {dealer.hand_value()}')
+
 
     quit = input('Play again?: ')
+
     if quit.lower() == 'no':
         print("Thank you for playing")
         break
