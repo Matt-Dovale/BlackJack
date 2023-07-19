@@ -19,6 +19,8 @@ class Deck:
 
     def shuffle(self):
         random.shuffle(self.deck)
+        self.top_of_deck = len(self.deck) - 1
+        
 
     def draw(self):
         card = self.deck[self.top_of_deck]

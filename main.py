@@ -9,6 +9,7 @@ dealer = Player('Dealer')
 player1 = Player('Matt')
 
 while True:
+    #Begin the round by dealing the cards
     player1.give_hand(deck)
     dealer.give_hand(deck)
 
@@ -18,6 +19,7 @@ while True:
     print('\nDealers Hand:')
     dealer.show_dealer_cards()
 
+    #Player Turn
     while player1.hand_value() < 21:
         print('Your hand: ')
         player1.show_hand()
