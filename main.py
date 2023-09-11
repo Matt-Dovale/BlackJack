@@ -11,11 +11,10 @@ player1 = Player('Matt')
 
 while True:
     #Begin the round by dealing the cards
+    bust = False
+
     player1.give_hand(deck)
     dealer.give_hand(deck)
-
-    print('\nYour hand: ')
-    player1.show_hand()
 
     print('\nDealers Hand:')
     dealer.show_dealer_cards()
@@ -41,8 +40,8 @@ while True:
             player1.show_hand()
             print(f'Current Value: {player1.hand_value()}')
             print('Bust')
+            bust = True
             time.sleep(2)
-
 
     #Dealers turn
     while dealer.hand_value() < 17:
@@ -58,7 +57,11 @@ while True:
         dealer.show_hand()
         print(f'Current Value: {dealer.hand_value()}')
 
-
+    if not bust and dealer.hand_value() < player1.hand_value():
+        print('You Win!')
+    else:
+        print('You Lost')
+    
     quit = input('Play again?: ')
 
     if quit.lower() == 'no':

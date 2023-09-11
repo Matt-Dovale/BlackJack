@@ -10,7 +10,9 @@ class Player:
         self.hand.append(deck.draw())
     
     def draw_card(self, deck):
-        self.hand.append(deck.draw())
+        new_card = deck.draw()
+        self.hand.append(new_card)
+        print(new_card)
     
     def return_hand(self):
         self.hand = []
